@@ -5,13 +5,13 @@ app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true }))
 let port = process.env.PORT || 3000;
 
-app.set('views', './views'); // Thư mục views nằm cùng cấp với file app.js
+app.set('views', './views');
 app.set('view engine', 'pug');
 
 const router = express.Router();
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/views/index.html');
+    res.sendFile(process.cwd() + '/views/index.html');
 });
 
 app.post('/', async (req, res) => {
