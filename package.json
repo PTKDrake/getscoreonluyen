@@ -1,7 +1,7 @@
 {
   "name": "getscoreonluyen_server",
   "version": "1.0.0",
-  "description": "Get score onluyen.vn website",
+  "description": "Get score onluyen.vn website.",
   "main": "website.js",
   "scripts": {
     "start": "tsc && node website.js"
