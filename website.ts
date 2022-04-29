@@ -1,5 +1,4 @@
 import axios from "axios";
-import e from "express";
 import express from 'express';
 const app = express();
 app.use(express.json()) // for parsing application/json
