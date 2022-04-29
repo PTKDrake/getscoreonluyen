@@ -22,7 +22,7 @@ app.set('views', './views'); // Thư mục views nằm cùng cấp với file ap
 app.set('view engine', 'pug');
 const router = express_1.default.Router();
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/static/index.html');
+    res.sendFile(__dirname + '/views/index.html');
 });
 app.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let email = req.body.email;
@@ -43,7 +43,6 @@ app.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                     const tests = yield getTests(token, exam.id);
                     for (const test of tests) {
                         const testInfo = yield getTestInfo(token, test.id);
-                        console.log(testInfo);
                         if (testInfo)
                             exam.tests.push(testInfo);
                     }
@@ -108,7 +107,7 @@ function getTests(token, examId) {
                 }
             });
             let subjects = [];
-            for (const subject of data) {
+            for (const subject of data.data) {
                 subjects.push({ id: subject.id });
             }
             return subjects;
