@@ -2,12 +2,13 @@
   "name": "getscoreonluyen_server",
   "version": "1.0.0",
   "description": "Get score onluyen.vn website.",
-  "main": "website.js",
+  "main": "index.js",
   "engines": {
     "node" : "14.x"
   },
   "scripts": {
-    "start": "node website.js"
+    "start": "node index.js",
+    "build": "tsc"
   },
   "author": "PTKDrake",
   "license": "ISC",
