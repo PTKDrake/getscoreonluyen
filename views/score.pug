@@ -1,0 +1,42 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        title Get Score OnLuyen.vn
+        link(rel='icon' href='https://www.onluyen.vn/wp-content/uploads/2020/02/ico-onluyen-150x150.png' sizes='32x32')
+        style.
+            a {
+            font-size: 25px;
+            }
+            table, td, th {
+            border: 1px solid #ddd;
+            text-align: left;
+            }
+            table {
+            border-collapse: collapse;
+            width: 100%;
+            }
+            th, td {
+            padding: 15px;
+            }
+    body
+        header
+            h2= title
+        for exam in exams
+            h3=exam.title
+            table
+                tbody
+                tr
+                    th Môn
+                    th Số câu đúng
+                    th Số câu sai
+                    th Điểm số
+                for test in exam.tests
+                    tr
+                        td #{test.title}
+                        td #{test.totalCorrect}
+                        td #{test.totalIncorrect}
+                        td #{test.totalScore}/#{test.maxScore}
+        br
+        br
+        a(href='/') Quay lại

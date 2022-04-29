@@ -1,0 +1,11 @@
+{
+  "name": "getscoreonluyen_server",
+  "version": "1.0.0",
+  "description": "Get score onluyen.vn website",
+  "main": "website.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "PTKDrake",
+  "license": "ISC"
+}
