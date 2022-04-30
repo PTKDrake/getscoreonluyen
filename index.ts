@@ -29,12 +29,31 @@ app.post('/', async (req, res) => {
                 for(const exam of exams){
                     exam.tests = [];
                     const tests = await getTests(token, exam.id);
+                    let sumS = 0;
+                    let sumC = 0;
+                    let sumI = 0;
                     for(const test of tests){
                         const testInfo = await getTestInfo(token, test.id);
-                        if(testInfo) exam.tests.push(testInfo);
+                        if(testInfo){
+                            if(testInfo.maxScore > 0){
+                                sumS += testInfo.totalScore;
+                                sumC += testInfo.totalCorrect;
+                                sumI += testInfo.totalIncorrect;
+                                exam.tests.push(testInfo);
+                            } 
+                        } 
+                    }
+                    if(sumS > 0){
+                        exam.tests.push({
+                            title: 'Tổng',
+                            maxScore: 0,
+                            totalCorrect: sumC,
+                            totalIncorrect: sumI,
+                            totalScore: sumS
+                        });
                     }
                 }
-                res.render('score', { title: `Danh sách điểm của ${name}`, exams: exams});
+                res.render('score', { title: `Danh sách các kỳ thi của học sinh ${name}:`, exams: exams});
             }
         }
     } catch (e) {

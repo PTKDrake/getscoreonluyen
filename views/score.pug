@@ -5,9 +5,6 @@ html(lang='en')
         title Get Score OnLuyen.vn
         link(rel='icon' href='https://www.onluyen.vn/wp-content/uploads/2020/02/ico-onluyen-150x150.png' sizes='32x32')
         style.
-            a {
-            font-size: 25px;
-            }
             table, td, th {
             border: 1px solid #ddd;
             text-align: left;
@@ -22,12 +19,12 @@ html(lang='en')
     body
         header
             h2= title
-        for exam in exams
-            h3=exam.title
+        for exam, index in exams
+            h3 #{index + 1}, #{exam.title}
             table
                 tbody
                 tr
-                    th Môn
+                    th Bài thi
                     th Số câu đúng
                     th Số câu sai
                     th Điểm số
@@ -36,11 +33,18 @@ html(lang='en')
                         td #{test.title}
                         td #{test.totalCorrect}
                         td #{test.totalIncorrect}
-                        td #{test.totalScore}/#{test.maxScore}
+                        if test.maxScore > 0
+                            td #{test.totalScore}/#{test.maxScore}
+                        else 
+                            td #{test.totalScore}
         br
         br
         a(href='/') Quay lại
         br
         br
+        label Info: 
         a(href='https://ad.mcmevn.com' target="_blank") PTKDrake 
+        br
+        label Email: 
+        a(href='mailto: admin@mcmevn.com') admin@mcmevn.com
         footer © Copyright 2022 PTKDrake
