@@ -43,7 +43,7 @@ app.post('/', async (req, res) => {
                             } 
                         } 
                     }
-                    if(sumS > 0){
+                    if(exam.tests.length > 1){
                         exam.tests.push({
                             title: 'Tổng',
                             maxScore: 0,
