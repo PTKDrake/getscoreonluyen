@@ -19,12 +19,13 @@ app.post('/', async (req, res) => {
     let password = req.body.password;
     try {
         const account = await login(email, password);
-        if(!account) res.send('Tài khoản không hợp lệ!');
-        else{
+        if(!account || account.token === null){
+            res.render('error', {error: 'Tài khoản không hợp lệ!'});
+        }else{
             const name = account.name;
             const token = account.token;
             let exams: Exam[] = await getListExam(token);
-            if(exams.length === 0) res.send('Bạn hiện không có kì thi nào.');
+            if(exams.length === 0) res.render('error', {error: 'Bạn hiện không có kì thi nào.'});
             else{
                 for(const exam of exams){
                     exam.tests = [];
